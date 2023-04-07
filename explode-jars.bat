@@ -2,8 +2,7 @@
 
 @REM The jar files will be located recursively in the JARPATH directory
 @REM and all jar files will be replaced with exploded directories.
-@REM The exploded directories will be named the same as the jar files,
-@REM sans the .jar extension.
+@REM The exploded directories will be named the same as the jar files.
 
 @REM Requires 7-Zip
 
@@ -22,6 +21,9 @@ for /f "delims=" %%a in ('dir /b /s /a-d %JARPATH%\*.jar') do (
 
     @REM Delete the jar file
     del %%a
+    
+    @REM Rename the extracted directory to the same name as the jar file
+    ren %%~dpna %%~nxa
 )
 
 @REM End of script
